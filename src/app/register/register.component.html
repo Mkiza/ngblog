@@ -1,0 +1,38 @@
+<app-header></app-header>
+<app-body>
+<div class="container-fluid">
+    <div class="row-mb-5">
+        <div class="col"> </div>
+        <div class="col-4 center-card">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">
+                                    Register
+                            </h4>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" [(ngModel)]="email" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" [(ngModel)]="password"  name="password" id="exampleInputPassword1">
+                        </div>
+                        <button type="button" class="btn btn-info" (click)="register()">Login</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <a style="text-decoration: none;" href="/login">Already have an account? <span class="text-danger">Login!</span></a>
+                            </div>
+                           
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+</app-body>

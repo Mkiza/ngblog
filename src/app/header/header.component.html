@@ -1,0 +1,22 @@
+
+    
+    
+    
+    <div class="card-header">
+
+        <a href="/dashboard" class="nav-link left"> Home</a>
+       <a href="/create-post" class="nav-link left">Create Post</a>
+       <b *ngIf="authService.userData as user else header">Hello {{user.email}}!</b>
+       <ng-template #header>
+        <b>Post App</b>
+         
+         </ng-template>
+
+         <a *ngIf="authService.userData as user else login" class="nav-link right" (click)="authService.logout()">Logout</a>
+         <ng-template #login>
+         <a *ngIf="!authService.userData" class="nav-link right" href="/login">Login</a>
+        </ng-template>
+    </div>
+    
+   
+ 

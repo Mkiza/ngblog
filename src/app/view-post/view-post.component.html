@@ -1,0 +1,39 @@
+<app-header></app-header>
+    
+<div *ngIf="!post" class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+     
+<div *ngIf="post" class="card">
+   
+  <div class="container"> 
+    <div class="card">
+      <div class="card__header">
+        <img src="https://source.unsplash.com/600x400/" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        
+        <h4>{{post.title}}</h4>
+        <p>{{post.content}}</p>
+      </div>
+      <div class="read-more">
+        <a href="/edit-post/{{post.id}}">Edit Post</a>
+      </div>
+      
+      <div class="card__footer">
+        <div (click)="likePost(post.id)" class="user like">
+          <p class="like-text"> Like: {{post.loveIts}} </p> 
+        </div>
+        
+        <div *ngIf="!beDeleted()" (click)="dislikePost(post.id)" class="user dislike">
+          <p class="like-test">Dislike: {{post.hateIts}} </p> 
+        </div>
+        <div *ngIf="beDeleted()"  class="user dislike">
+          <a class="delete" href="/dashboard" (click)="deletePost(post.id)">Delete Post</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
