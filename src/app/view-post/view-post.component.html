@@ -21,18 +21,19 @@
       <div class="read-more">
         <a href="/edit-post/{{post.id}}">Edit Post</a>
       </div>
-      
-      <div class="card__footer">
-        <div (click)="likePost(post.id)" class="user like">
+      <br/>
+      <div  class="card__footer">
+        <div *ngIf="authService.userData" (click)="likePost(post.id)" class="user like">
           <p class="like-text"> Like: {{post.loveIts}} </p> 
         </div>
         
-        <div *ngIf="!beDeleted()" (click)="dislikePost(post.id)" class="user dislike">
+        <div *ngIf="authService.userData && !beDeleted()" (click)="dislikePost(post.id)" class="user dislike">
           <p class="like-test">Dislike: {{post.hateIts}} </p> 
         </div>
-        <div *ngIf="beDeleted()"  class="user dislike">
+        <div  *ngIf="beDeleted() && authService.userData"  class="user dislike">
           <a class="delete" href="/dashboard" (click)="deletePost(post.id)">Delete Post</a>
         </div>
+        
       </div>
     </div>
   </div>

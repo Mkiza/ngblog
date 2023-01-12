@@ -18,9 +18,9 @@ import { AuthService } from './service/auth.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
-import { CreatePostComponent } from './create-post/create-post.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostComponent } from './view-post/view-post.component';
-import { EditPostComponent } from './edit-post/edit-post.component';
+import { EditPostComponent } from './post/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [

@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CreatePostComponent } from './create-post/create-post.component';
+import { CreatePostComponent } from './post/create-post/create-post.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ViewPostComponent } from './view-post/view-post.component';
-import { EditPostComponent } from './edit-post/edit-post.component';
+import { EditPostComponent } from './post/edit-post/edit-post.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dasboard', pathMatch: 'full' },

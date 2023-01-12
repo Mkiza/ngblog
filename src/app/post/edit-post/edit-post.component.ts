@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Post } from '../model/post';
-import { AuthService } from '../service/auth.service';
-import { PostService } from '../service/post.service';
+import { Post } from '../../model/post';
+import { AuthService } from '../../service/auth.service';
+import { PostService } from '../../service/post.service';
 
 @Component({
   selector: 'app-edit-post',
