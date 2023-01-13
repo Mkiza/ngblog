@@ -34,12 +34,21 @@ export class AuthService {
   // login method
   login(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password)
-    .then((result) => { this.SetUserData(result.user);
+    .then((result) => { 
+      if(result.user?.emailVerified !== true) {
+        this.SendVerificationMail();
+          window.alert(
+            'Please validate your email address. Kindly check your inbox.'
+          );
+      } else {
+      this.SetUserData(result.user);
       this.auth.authState.subscribe((user) => {
         if (user) {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['/dashboard']).then(() => {
+            window.location.reload();
+          });
         }
-      });}, 
+      });}}, 
     error => {alert(
       error.message
     ), this.router.navigate(['/login'])});
@@ -71,53 +80,40 @@ SendVerificationMail() {
       return user?.sendEmailVerification();
     })
     .then(() => {
-      this.router.navigate(['verify-email-address']);
+      this.router.navigate(['verify-email']);
     });
 }
 
   // register method
   register(email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password)
-    .then((result) => {this.SetUserData(result.user), alert('Succesfull!'), this.router.navigate(['/login'])}, 
-    error => {alert('Error!'), this.router.navigate(['/register'])});
+    .then((result) => {this.SendVerificationMail(), this.router.navigate(['/verify-email'])}, 
+    error => {alert(error.message), this.router.navigate(['/register'])});
   }
-
 
   // logout method
   logout() {
-    return this.auth.signOut().then(() => {localStorage.removeItem('user'), this.router.navigate(['/login'])}, error => {alert('Error!')});
+    return this.auth.signOut().then(() => {localStorage.removeItem('user'), this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });}, error => {alert('Error!')});
   }
-  // get current user
-  getCurrentUser() {
-   return this.auth.currentUser;
-  }
+  
   // update user post 
   updateUserPosts(post: Post) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${this.userData.uid}`
     );
    return updateDoc(userRef.ref, {
-      posts: arrayUnion(post)
+      posts: arrayRemove(post)
     });
 
   }
 
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.router.navigate(['dashboard']);
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
+ 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null;
+    return user !== null && user.emailVerified !== false ? true : false;;
   }
 
 }

@@ -22,7 +22,7 @@
               <label for="exampleInputPassword1" class="form-label">Post Content</label>
               <textarea  rows="3" cols="15" class="form-control" [(ngModel)]="newPost.content"  name="content"></textarea>
             </div>
-            <button type="button" class="btn btn-info" (click)="createPost()">Create Post</button>
+            <button type="button" class="btn btn-info" (keyup.enter)="createPost()" (click)="createPost()">Create Post</button>
           </form>
       </div>
     </div>

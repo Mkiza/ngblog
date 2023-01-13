@@ -21,6 +21,7 @@ import { BodyComponent } from './body/body.component';
 import { CreatePostComponent } from './post/create-post/create-post.component';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { EditPostComponent } from './post/edit-post/edit-post.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { EditPostComponent } from './post/edit-post/edit-post.component';
     CreatePostComponent,
     ViewPostComponent,
     EditPostComponent,
+    VerifyEmailComponent,
    
   ],
   imports: [

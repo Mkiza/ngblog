@@ -30,11 +30,13 @@ export class EditPostComponent {
       console.log(x)
     })
   }
-  editPost(id: string) {
+  editPost(post:Post) {
     if(this.post){
-      this.postService.updatePost(id,this.post).then(result => {
+      this.postService.updatePost(this.post).then(result => {
         alert("Post updated successfully");
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard']).then(() => {
+          window.location.reload();
+        });
       }).catch(err => {
         alert("Error updating post");
       });
