@@ -35,12 +35,11 @@ export class ViewPostComponent {
   getSpecificPost(id: string) {
     this.postService.getPost(id).subscribe((x: any) => {
       this.post = x;
-      console.log(x)
     })
   }
 
-  deletePost(id: string) {
-    this.postService.deletePost(id).then(result => {
+  deletePost(post: Post) {
+    this.postService.deletePost(post).then(result => {
       alert("Post deleted successfully");
     }).catch(err => {
       alert("Error deleting post");
@@ -52,7 +51,7 @@ export class ViewPostComponent {
       this.post.loveIts++;
       if(this.post.hateIts > 0)
       this.post.hateIts--;
-      this.postService.updatePost(id,this.post).then(result => {
+      this.postService.updatePost(this.post).then(result => {
         
       }).catch(err => {
         alert("Error updating post");
@@ -67,7 +66,7 @@ export class ViewPostComponent {
       if(this.post.loveIts > 0)
       this.post.loveIts--;
       this.post.hateIts++;
-      this.postService.updatePost(id,this.post).then(result => {
+      this.postService.updatePost(this.post).then(result => {
       }).catch(err => {
         alert("Error updating post");
       });

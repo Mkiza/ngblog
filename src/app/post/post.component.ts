@@ -9,7 +9,4 @@ import { Post } from '../model/post';
 export class PostComponent {
   @Input() post!: Post;
 
-  ngOnInit(): void {
-    console.log(this.post.created_at);
-  }
 }

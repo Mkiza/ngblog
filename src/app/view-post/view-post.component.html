@@ -8,8 +8,8 @@
      
 <div *ngIf="post" class="card">
    
-  <div class="container"> 
-    <div class="card">
+  <div class="container align-items-center"> 
+    <div class="card ">
       <div class="card__header">
         <img src="https://source.unsplash.com/600x400/" alt="card__image" class="card__image" width="600">
       </div>
@@ -18,8 +18,8 @@
         <h4>{{post.title}}</h4>
         <p>{{post.content}}</p>
       </div>
-      <div class="read-more">
-        <a href="/edit-post/{{post.id}}">Edit Post</a>
+      <div  class="read-more">
+        <a *ngIf="authService.userData" href="/edit-post/{{post.id}}">Edit Post</a>
       </div>
       <br/>
       <div  class="card__footer">
@@ -31,7 +31,7 @@
           <p class="like-test">Dislike: {{post.hateIts}} </p> 
         </div>
         <div  *ngIf="beDeleted() && authService.userData"  class="user dislike">
-          <a class="delete" href="/dashboard" (click)="deletePost(post.id)">Delete Post</a>
+          <a class="delete" href="/dashboard" (click)="deletePost(post)">Delete Post</a>
         </div>
         
       </div>

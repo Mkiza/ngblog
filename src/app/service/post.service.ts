@@ -23,12 +23,13 @@ export class PostService {
     return this.firestore.collection('posts').doc(post.id).set(post);
   }
 
-  updatePost(id: string, post: Post) {
+  updatePost(post: Post) {
     this.authService.updateUserPosts(post);
-    return this.firestore.collection('posts').doc(id).update(post);
+    return this.firestore.collection('posts').doc(post.id).update(post);
   }
-  deletePost(id: string) {
-    return this.firestore.collection('posts').doc(id).delete();
+  deletePost(post: Post) {
+    this.authService.updateUserPosts(post);
+    return this.firestore.collection('posts').doc(post.id).delete();
   }
   //get the user's posts
   getUserPosts(id:string) {

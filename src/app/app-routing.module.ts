@@ -7,6 +7,7 @@ import { CreatePostComponent } from './post/create-post/create-post.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { ViewPostComponent } from './view-post/view-post.component';
 import { EditPostComponent } from './post/edit-post/edit-post.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dasboard', pathMatch: 'full' },
@@ -15,8 +16,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'create-post', component: CreatePostComponent, canActivate: [AuthGuard] },
   { path: 'view-post/:id', component: ViewPostComponent},
-  {path: 'my-posts/:id', component:DashboardComponent, canActivate: [AuthGuard] },
   { path: 'edit-post/:id', component: EditPostComponent, canActivate: [AuthGuard]},
+  {path: 'verify-email', component: VerifyEmailComponent},
   { path: '**', redirectTo: 'dashboard', pathMatch: 'full'}
 
 
